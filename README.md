@@ -8,7 +8,7 @@ This package provides four keyboard layout variants:
 
 - **Uzbek (Standard):** The main layout with full typographic control.
   - Uses the correct **ʻOkina** (U+02BB) for _Oʻ/Gʻ_ and **Modifier Apostrophe** (U+02BC) for the _tutuq belgisi_.
-  - Access to additional characters like **Ö, Ğ, Ş, Ç, İ** using the `AltGr` key.
+  - Access to additional characters like **Ö, Õ, Ğ, Ş, Ç, İ** using the `AltGr` key.
 - **Uzbek (US):** The standard US QWERTY layout with essential Uzbek characters available via `AltGr`.
   - `AltGr` + `'` → **ʻ** (Okina)
   - `AltGr` + `` ` `` → **ʼ** (Tutuq belgisi)
