@@ -4,7 +4,7 @@
 // belgilar odatdagidek turadi. Faqat o'zbek tiliga xos belgilar
 // (tutuq belgisi ʻ, qo'shtirnoq va ş ç ö õ ğ ı harflari) o'ng Alt (AltGr)
 // tugmasi orqali chiqadi.
-// Original: October 17, 2025 by Bilolbek Normuminov <bilolbeknormuminov@gmail.com>
+// Original: August 1, 2026 by Mirsultonov Mirsoli <mirrrrjr@gmail.com>
 // AltGr bilan yangilangan versiya.
 
 default partial alphanumeric_keys
