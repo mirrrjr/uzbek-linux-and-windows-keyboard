@@ -33,7 +33,7 @@ Add this repository as a flake input to your `flake.nix`:
   inputs = {
     ...
     # Add this line to your inputs
-    uzbek-keyboard.url = "github:itsbilolbek/uzbek-linux-keyboard";
+    uzbek-keyboard.url = "github:mirrrjr/uzbek-linux-and-windows-keyboard";
   }
 
   outputs = {
@@ -65,8 +65,8 @@ services.xserver.xkb.uz-enhanced.enable = true;
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/itsbilolbek/uzbek-linux-keyboard.git
-cd uzbek-linux-keyboard
+git clone https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard.git
+cd uzbek-linux-and-windows-keyboard
 ```
 
 2. Run the installation script:
