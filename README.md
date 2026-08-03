@@ -81,11 +81,11 @@ A Windows version of the same **Uzbek (Standard)** layout is available, built wi
 
 | Base | Shift |
 |---|---|
-| ![Base layer](./.github/assets/windows/Uz-latin.jpg) | ![Shift layer](./.github/assets/windows/Uz-latinShft.jpg) |
+| ![Base layer](./.github/assets/Uz-latin.jpg) | ![Shift layer](./.github/assets/Uz-latinShft.jpg) |
 
 | AltGr | Shift + AltGr |
 |---|---|
-| ![AltGr layer](./.github/assets/windows/Uz-latinAltGr.jpg) | ![Shift+AltGr layer](./.github/assets/windows/Uz-latinShftAltGr.jpg) |
+| ![AltGr layer](./.github/assets/Uz-latinAltGr.jpg) | ![Shift+AltGr layer](./.github/assets/Uz-latinShftAltGr.jpg) |
 
 ### Install on Windows
 
