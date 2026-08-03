@@ -89,7 +89,7 @@ A Windows version of the same **Uzbek (Standard)** layout is available, built wi
 
 ### Install on Windows
 
-1. Go to the [Releases](https://github.com/itsbilolbek/uzbek-linux-keyboard/releases) page and download the latest `setup.exe`.
+1. Go to the [Releases](https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard/releases) page and download the latest `setup.exe`.
 2. Run the installer (you may see a Windows SmartScreen warning since the installer isn't signed — this is expected for a small, freely distributed tool; choose **More info → Run anyway**).
 3. Open **Settings → Time & Language → Language & Region**, click your language → **Options**, then **Add a keyboard** and choose **Uzbek (AltGr)**.
 4. Switch to it using the language indicator in the taskbar, or `Win + Space`.
