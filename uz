@@ -1,30 +1,27 @@
 // Keyboard layouts for Uzbekistan.
 
-// Bazaviy qatlam AQSh (US) klaviaturasiga asoslangan — asosiy harflar va
-// belgilar odatdagidek turadi. Faqat o'zbek tiliga xos belgilar
-// (tutuq belgisi ʻ, qo'shtirnoq va ş ç ö õ ğ ı harflari) o'ng Alt (AltGr)
-// tugmasi orqali chiqadi.
-// Original: August 1, 2026 by Mirsultonov Mirsoli <mirrrrjr@gmail.com>
-// AltGr bilan yangilangan versiya.
+// The base layer is based on the US keyboard layout, so standard letters and
+// symbols remain unchanged. Only Uzbek-specific characters
+// (the apostrophe ʻ, quotation marks, and the letters ş, ç, ö, õ, ğ, ı)
+// are accessed using the right Alt (AltGr) key.
+// Original: August 1, 2026 by Mirsoli Mirsultonov <mirrrrjr@gmail.com>
+// Updated with AltGr support.
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
     include "us(basic)"
     name[Group1]= "Uzbek";
 
-    // Tutuq belgisi (ʻ) va o'zbekcha qo'shtirnoq/apostrof - AltGr orqali
     key <TLDE> { [      grave, asciitilde,         U02BC,      dead_grave ] };  // GRAVE ACCENT, TILDE, MODIFIER LETTER APOSTROPHE, GRAVE ACCENT
     key <AC11> { [ apostrophe,   quotedbl,         U02BB,        quotedbl ] };  // APOSTROPHE, QUOTATION MARK, MODIFIER LETTER TURNED COMMA, QUOTATION MARK
 
-    // O'zbekcha maxsus harflar - AltGr orqali: ş ç ö õ ğ ı
     key <AC02> { [         s,          S,      scedilla,        Scedilla ] };  // s -> ş, S -> Ş
     key <AC05> { [         g,          G,        gbreve,          Gbreve ] };  // g -> ğ, G -> Ğ
     key <AB03> { [         c,          C,      ccedilla,        Ccedilla ] };  // c -> ç, C -> Ç
     key <AD08> { [         i, Iabovedot,     idotless,               I  ] };  // i -> İ (Shift), AltGr+i -> ı, AltGr+Shift+i -> I
     key <AD09> { [         o,          O,    odiaeresis,      Odiaeresis ] };  // o -> ö, O -> Ö
-    key <AD10> { [         p,          P,        otilde,          Otilde ] };  // p -> õ, P -> Õ  (eslatma: shu tugmadagi eski PRIME/DOUBLE PRIME endi yo'q, quyidagi hisobotga qarang)
+    key <AD10> { [         p,          P,        otilde,          Otilde ] };  // p -> õ, P -> Õ
 
-    // Asl fayldagi qo'shimcha belgilar (raqamlar qatori) - AltGr orqali tiklandi
     key <AE01> { [         1,      exclam,   onesuperior,      exclamdown ] };  //                    DIGIT ONE,       EXCLAMATION MARK,                            SUPERSCRIPT ONE,             INVERTED EXCLAMATION MARK
     key <AE02> { [         2,          at,   twosuperior,         onehalf ] };  //                    DIGIT TWO,          COMMERCIAL AT,                            SUPERSCRIPT TWO,              VULGAR FRACTION ONE HALF
     key <AE03> { [         3,  numbersign, threesuperior,           U2153 ] };  //                  DIGIT THREE,            NUMBER SIGN,                          SUPERSCRIPT THREE,             VULGAR FRACTION ONE THIRD
@@ -38,7 +35,6 @@ xkb_symbols "basic" {
     key <AE11> { [     minus,  underscore,        emdash,          endash ] };  //                 HYPHEN-MINUS,      LOW LINE, EM DASH,                                    EN DASH
     key <AE12> { [     equal,        plus,      notequal,       plusminus ] };  //                  EQUALS SIGN,              PLUS SIGN,                               NOT EQUAL TO,                       PLUS-MINUS SIGN
 
-    // Yuqori qator (Q-P) - qolgan tugmalar
     key <AD01> { [         q,           Q,             q,      dead_breve ] };  //         LATIN SMALL LETTER Q, LATIN CAPITAL LETTER Q,                       LATIN SMALL LETTER Q,                                 BREVE
     key <AD03> { [         e,           E,      EuroSign,            cent ] };  //         LATIN SMALL LETTER E, LATIN CAPITAL LETTER E,                                  EURO SIGN,                             CENT SIGN
     key <AD04> { [         r,           R,         U00ae,  dead_abovering ] };  //         LATIN SMALL LETTER R, LATIN CAPITAL LETTER R,                            REGISTERED SIGN,                            RING ABOVE
@@ -46,7 +42,6 @@ xkb_symbols "basic" {
     key <AD06> { [         y,           Y,         U00a5                  ] };  //         LATIN SMALL LETTER Y, LATIN CAPITAL LETTER Y,                                   YEN SIGN
     key <BKSL> { [ backslash,         bar,         U2011                  ] };  //                    BACKSLASH,          VERTICAL LINE,                        NON-BREAKING HYPHEN
 
-    // O'rta qator (A-L) - qolgan tugmalar
     key <AC01> { [         a,           A,         U2248,           U2318 ] };  //         LATIN SMALL LETTER A, LATIN CAPITAL LETTER A,                            ALMOST EQUAL TO,                PLACE OF INTEREST SIGN
     key <AC03> { [         d,           D,         U00b0,           U2300 ] };  //         LATIN SMALL LETTER D, LATIN CAPITAL LETTER D,                                DEGREE SIGN,                         DIAMETER SIGN
     key <AC04> { [         f,           F,         U00a3                  ] };  //         LATIN SMALL LETTER F, LATIN CAPITAL LETTER F,                                 POUND SIGN
@@ -55,7 +50,6 @@ xkb_symbols "basic" {
     key <AC09> { [         l,           L,         U201d,           U2019 ] };  //         LATIN SMALL LETTER L, LATIN CAPITAL LETTER L,                RIGHT DOUBLE QUOTATION MARK,           RIGHT SINGLE QUOTATION MARK
     key <AC10> { [ semicolon,       colon,     semicolon,  dead_diaeresis ] };  //                    SEMICOLON,                  COLON,                                  SEMICOLON,                             DIAERESIS
 
-    // Pastki qator (Z-M) va qo'shtirnoq belgilari («» va h.k.) - qolgan tugmalar
     key <AB01> { [         z,           Z,             z,    dead_cedilla ] };  //         LATIN SMALL LETTER Z, LATIN CAPITAL LETTER Z,                       LATIN SMALL LETTER Z,                               CEDILLA
     key <AB02> { [         x,           X,         U00d7,           U00b7 ] };  //         LATIN SMALL LETTER X, LATIN CAPITAL LETTER X,                        MULTIPLICATION SIGN,                            MIDDLE DOT
     key <AB04> { [         v,           V,     downarrow,      dead_caron ] };  //         LATIN SMALL LETTER V, LATIN CAPITAL LETTER V,                            DOWNWARDS ARROW,                                 CARON
@@ -68,7 +62,6 @@ xkb_symbols "basic" {
 
     key <SPCE> { [     space,       space,  nobreakspace                  ] };  //                 SPACE, SPACE,         NO-BREAK SPACE
 
-    // O'ng Alt tugmasini AltGr (level3/level4) sifatida ishlatish
     include "level3(ralt_switch)"
 };
 
