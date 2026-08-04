@@ -104,6 +104,16 @@ Then, go to your system's **Settings > Keyboard** (or **Input Sources**), search
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Tested On
+
+This project has been tested on:
+
+- **Arch Linux** — GNOME, Wayland
+- **Debian 13** — GNOME, Wayland
+- **Windows 10**
+
+If you've tried it on another distro, desktop environment, or Windows version, feel free to open an issue or PR to let us know how it went.
+
 ## Acknowledgements
 
 This project builds on the original Uzbek XKB layout by [itsbilolbek/uzbek-linux-keyboard](https://github.com/itsbilolbek/uzbek-linux-keyboard). Katta rahmat, Bilolbek — asl lotin, 2023, va kirill layoutlarisiz bu loyiha bo'lmasdi!
