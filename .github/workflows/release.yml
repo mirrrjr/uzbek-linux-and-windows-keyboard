@@ -1,0 +1,28 @@
+name: Release
+
+on:
+    push:
+        tags:
+            - "v*"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Build Windows installer zip
+              run: |
+                  cd windows
+                  zip -r ../uz-latin-windows.zip uz-latin/
+
+            - name: Publish release
+              uses: softprops/action-gh-release@v2
+              with:
+                  files: uz-latin-windows.zip
+                  generate_release_notes: true
