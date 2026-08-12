@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Uzbek Keyboard Layout</title>
+        <meta
+            name="description"
+            content="A typographically correct Uzbek keyboard layout for Linux & Windows, featuring 2023 alphabet updates."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #080808;
+                --bg-alt: #171717;
+                --bg-raised: #1c1c1c;
+                --line: #2b2b2b;
+                --fg: #bdbdbd;
+                --fg-dim: #6b6b6b;
+                --fg-bright: #f4f4f0;
+                --purple: #cf87e8;
+                --blue: #74b2ff;
+                --green: #8cc85f;
+                --orange: #de935f;
+                --cyan: #78dce8;
+                --red: #ff5454;
+                --yellow: #ffd700;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--fg);
+                font-family:
+                    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+                    monospace;
+                font-size: 15px;
+                line-height: 1.65;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            ::selection {
+                background: var(--purple);
+                color: var(--bg);
+            }
+            a {
+                color: var(--blue);
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+            }
+            a:hover {
+                border-bottom-color: var(--blue);
+            }
+
+            .wrap {
+                max-width: 780px;
+                margin: 0 auto;
+                padding: 5vh 20px 10vh;
+            }
+
+            .term {
+                background: var(--bg-alt);
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7);
+            }
+            .term + .term {
+                margin-top: 20px;
+            }
+
+            .term-bar {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 14px;
+                background: var(--bg-raised);
+                border-bottom: 1px solid var(--line);
+            }
+            .dot {
+                width: 11px;
+                height: 11px;
+                border-radius: 50%;
+                background: var(--line);
+            }
+            .dot.red {
+                background: var(--red);
+            }
+            .dot.yellow {
+                background: var(--yellow);
+            }
+            .dot.green {
+                background: var(--green);
+            }
+            .term-title {
+                margin-left: 8px;
+                font-size: 12px;
+                color: var(--fg-dim);
+                letter-spacing: 0.02em;
+            }
+            .term-body {
+                padding: 18px 20px 22px;
+            }
+
+            .prompt {
+                color: var(--green);
+            }
+            .prompt .path {
+                color: var(--blue);
+            }
+            .prompt .sym {
+                color: var(--fg-dim);
+            }
+            .cmd {
+                color: var(--fg-bright);
+            }
+            .cmt {
+                color: var(--fg-dim);
+            }
+
+            .type-line {
+                position: relative;
+                white-space: pre-wrap;
+                word-break: break-all;
+            }
+            .type-line .caret {
+                display: inline-block;
+                width: 8px;
+                height: 1em;
+                background: var(--green);
+                margin-left: 2px;
+                vertical-align: -2px;
+                animation: blink 1s steps(1) infinite;
+            }
+            .type-line.done .caret {
+                display: none;
+            }
+            @keyframes blink {
+                50% {
+                    opacity: 0;
+                }
+            }
+
+            pre.code {
+                margin: 0;
+                padding: 14px 16px;
+                background: var(--bg-raised);
+                border-radius: 6px;
+                overflow-x: auto;
+                font-size: 13.5px;
+                color: var(--fg);
+                border: 1px solid var(--line);
+            }
+            pre.code .key {
+                color: var(--purple);
+            }
+            pre.code .str {
+                color: var(--green);
+            }
+            pre.code .cmt {
+                color: var(--fg-dim);
+            }
+            pre.code .path {
+                color: var(--blue);
+            }
+
+            h1 {
+                font-size: 21px;
+                font-weight: 700;
+                color: var(--fg-bright);
+                margin: 0 0 4px;
+            }
+            .sub {
+                color: var(--fg-dim);
+                font-size: 13.5px;
+                margin: 0 0 28px;
+                max-width: 58ch;
+            }
+
+            .step-head {
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
+                margin: 0 0 10px;
+            }
+            .step-num {
+                color: var(--purple);
+                font-weight: 700;
+                font-size: 13px;
+            }
+            .step-title {
+                color: var(--fg-bright);
+                font-weight: 500;
+                font-size: 15px;
+            }
+            .step-note {
+                color: var(--fg-dim);
+                font-size: 13.5px;
+                margin: 10px 0 0;
+            }
+            .step-note code {
+                color: var(--cyan);
+            }
+
+            section {
+                margin-top: 40px;
+            }
+            section:first-of-type {
+                margin-top: 0;
+            }
+
+            /* layout variant rows */
+            .layout-row {
+                display: grid;
+                grid-template-columns: 140px 1fr;
+                gap: 14px;
+                padding: 9px 0;
+                border-top: 1px solid var(--line);
+            }
+            .layout-row:first-child {
+                border-top: none;
+            }
+            .layout-row .name {
+                color: var(--fg-bright);
+                font-weight: 500;
+            }
+            .layout-row .desc {
+                color: var(--fg);
+                font-size: 13.5px;
+            }
+            .layout-row .desc code {
+                background: var(--bg-raised);
+                padding: 1px 5px;
+                border-radius: 3px;
+                color: var(--cyan);
+                font-size: 12.5px;
+            }
+
+            .legend {
+                display: flex;
+                gap: 22px;
+                margin-top: 16px;
+                flex-wrap: wrap;
+            }
+            .legend .item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 13px;
+                color: var(--fg-dim);
+            }
+            .legend .swatch {
+                width: 12px;
+                height: 12px;
+                border-radius: 3px;
+            }
+
+            .num-steps {
+                counter-reset: step;
+            }
+            .num-steps li {
+                counter-increment: step;
+                list-style: none;
+                position: relative;
+                padding-left: 28px;
+                margin-bottom: 10px;
+                font-size: 13.5px;
+                color: var(--fg);
+            }
+            .num-steps li::before {
+                content: counter(step);
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: var(--purple);
+                font-weight: 700;
+                font-size: 12px;
+            }
+            .num-steps code {
+                color: var(--cyan);
+                background: var(--bg-raised);
+                padding: 1px 5px;
+                border-radius: 3px;
+                font-size: 12.5px;
+            }
+
+            .shots {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-top: 12px;
+            }
+            .shots img,
+            .hero-img img {
+                width: 100%;
+                display: block;
+                border-radius: 6px;
+                border: 1px solid var(--line);
+            }
+            .shots figure,
+            .hero-img figure {
+                margin: 0;
+            }
+            .shots figcaption {
+                font-size: 11.5px;
+                color: var(--fg-dim);
+                margin-top: 6px;
+                text-align: center;
+            }
+
+            ul.plain {
+                margin: 0;
+                padding-left: 20px;
+                font-size: 13.5px;
+                color: var(--fg);
+            }
+            ul.plain li {
+                margin-bottom: 4px;
+            }
+            ul.plain li::marker {
+                color: var(--purple);
+            }
+
+            .quote {
+                border-left: 2px solid var(--purple);
+                padding: 4px 0 4px 14px;
+                color: var(--fg);
+                font-size: 13.5px;
+                font-style: italic;
+            }
+
+            footer {
+                margin-top: 48px;
+                padding-top: 20px;
+                border-top: 1px solid var(--line);
+                color: var(--fg-dim);
+                font-size: 13px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            @media (max-width: 560px) {
+                .wrap {
+                    padding: 6vw 14px 14vw;
+                }
+                .term-body {
+                    padding: 14px 14px 18px;
+                }
+                .shots {
+                    grid-template-columns: 1fr;
+                }
+                .layout-row {
+                    grid-template-columns: 1fr;
+                    gap: 4px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .caret {
+                    animation: none;
+                }
+                html {
+                    scroll-behavior: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <h1>Uzbek Keyboard Layout</h1>
+            <p class="sub">
+                A typographically correct keyboard layout for Uzbek, featuring
+                2023 alphabet updates and quick access to special characters —
+                for Linux & Windows.
+            </p>
+
+            <!-- HERO: keyboard image -->
+            <div class="term hero-img">
+                <div class="term-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span
+                    ><span class="dot green"></span
+                    ><span class="term-title">Uzbek (Standard)</span>
+                </div>
+                <div class="term-body">
+                    <figure>
+                        <img
+                            src="./.github/assets/keyboard-layout.png"
+                            alt="Uzbek keyboard layout"
+                        />
+                        <figcaption>
+                            Purple keys require
+                            <code style="color: var(--purple)">AltGr</code>,
+                            blue keys require
+                            <code style="color: var(--blue)">Shift+AltGr</code>.
+                        </figcaption>
+                    </figure>
+                    <div class="legend">
+                        <div class="item">
+                            <span
+                                class="swatch"
+                                style="background: var(--purple)"
+                            ></span>
+                            AltGr
+                        </div>
+                        <div class="item">
+                            <span
+                                class="swatch"
+                                style="background: var(--blue)"
+                            ></span>
+                            Shift + AltGr
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYOUTS -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">＃</span
+                    ><span class="step-title">Layouts</span>
+                </div>
+                <div class="term">
+                    <div class="term-bar">
+                        <span class="dot red"></span
+                        ><span class="dot yellow"></span
+                        ><span class="dot green"></span
+                        ><span class="term-title">4 variants</span>
+                    </div>
+                    <div class="term-body">
+                        <div class="layout-row">
+                            <div class="name">Uzbek (Standard)</div>
+                            <div class="desc">
+                                Plain US QWERTY base. <code>AltGr</code> → Ş, Ç,
+                                Ö, Õ, Ğ, ı, İ. <code>AltGr+`</code> → ʼ (tutuq
+                                belgisi). <code>AltGr+'</code> → ʻ (used in
+                                Oʻ/Gʻ). Plus dashes, guillemets, curly quotes,
+                                currency signs.
+                            </div>
+                        </div>
+                        <div class="layout-row">
+                            <div class="name">Uzbek (US)</div>
+                            <div class="desc">
+                                Kept for naming compatibility — now identical to
+                                Standard.
+                            </div>
+                        </div>
+                        <div class="layout-row">
+                            <div class="name">Uzbek (2023)</div>
+                            <div class="desc">
+                                Based on the proposed 2023 alphabet update — no
+                                <code>AltGr</code> needed. <code>W</code>→Ş/ş,
+                                <code>[</code>→Õ/õ, <code>]</code>→Ğ/ğ.
+                            </div>
+                        </div>
+                        <div class="layout-row">
+                            <div class="name">Uzbek (Cyrillic)</div>
+                            <div class="desc">
+                                A Cyrillic variant of the Uzbek keyboard layout.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INSTALL: NixOS -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">01</span
+                    ><span class="step-title"
+                        >Install — NixOS (recommended)</span
+                    >
+                </div>
+                <p class="step-note" style="margin: 0 0 10px">
+                    Add this repository as a flake input to your
+                    <code>flake.nix</code>:
+                </p>
+                <pre class="code"><span class="cmt"># flake.nix</span>
+{
+  inputs = {
+    ...
+    <span class="cmt"># Add this line to your inputs</span>
+    uzbek-keyboard.url = <span class="str">"github:mirrrjr/uzbek-linux-and-windows-keyboard"</span>;
+  }
+
+  outputs = {
+    ...
+    <span class="cmt"># Add this line to your outputs</span>
+    uzbek-keyboard,
+  } @ inputs:
+  {
+    nixosConfigurations.<span class="str">"nixos"</span> = nixpkgs.lib.nixosSystem {
+      modules = {
+        ...
+        <span class="cmt"># Add this line to your modules</span>
+        uzbek-keyboard.nixosModules.module
+      }
+    }
+  }
+}</pre>
+                <p class="step-note">
+                    Then enable it in <code>configuration.nix</code>:
+                </p>
+                <pre class="code"><span class="cmt"># configuration.nix</span>
+services.xserver.xkb.uz-enhanced.enable = <span class="key">true</span>;</pre>
+            </section>
+
+            <!-- INSTALL: other linux -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">02</span
+                    ><span class="step-title"
+                        >Install — other Linux distributions</span
+                    >
+                </div>
+                <div class="term">
+                    <div class="term-bar">
+                        <span class="dot red"></span
+                        ><span class="dot yellow"></span
+                        ><span class="dot green"></span
+                        ><span class="term-title">zsh</span>
+                    </div>
+                    <div class="term-body" id="step2"></div>
+                </div>
+            </section>
+
+            <!-- INSTALL: windows -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">03</span
+                    ><span class="step-title">Install — Windows</span>
+                </div>
+                <ol class="num-steps">
+                    <li>
+                        Go to the
+                        <a
+                            href="https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard/releases"
+                            >Releases</a
+                        >
+                        page and download the latest <code>setup.exe</code>.
+                    </li>
+                    <li>
+                        Run the installer — Windows SmartScreen may warn since
+                        it isn't signed; this is expected for a small, freely
+                        distributed tool. Choose
+                        <code>More info → Run anyway</code>.
+                    </li>
+                    <li>
+                        Open
+                        <code
+                            >Settings → Time & Language → Language &
+                            Region</code
+                        >, click your language → <code>Options</code>, then
+                        <code>Add a keyboard</code> and choose
+                        <code>Uzbek (AltGr)</code>.
+                    </li>
+                    <li>
+                        Switch to it using the language indicator in the
+                        taskbar, or <code>Win + Space</code>.
+                    </li>
+                </ol>
+                <div class="shots">
+                    <figure>
+                        <img
+                            src="./.github/assets/Uz-latin.jpg"
+                            alt="Base layer"
+                        />
+                        <figcaption>Base layer</figcaption>
+                    </figure>
+                    <figure>
+                        <img
+                            src="./.github/assets/Uz-latinShft.jpg"
+                            alt="Shift layer"
+                        />
+                        <figcaption>Shift layer</figcaption>
+                    </figure>
+                    <figure>
+                        <img
+                            src="./.github/assets/Uz-latinAltGr.jpg"
+                            alt="AltGr layer"
+                        />
+                        <figcaption>AltGr layer</figcaption>
+                    </figure>
+                    <figure>
+                        <img
+                            src="./.github/assets/Uz-latinShftAltGr.jpg"
+                            alt="Shift+AltGr layer"
+                        />
+                        <figcaption>Shift+AltGr layer</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- USAGE -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">04</span
+                    ><span class="step-title">Usage</span>
+                </div>
+                <p class="step-note" style="margin: 0">
+                    After installation, you may need to log out and log back in.
+                    Then go to your system's
+                    <code>Settings → Keyboard</code> (or
+                    <code>Input Sources</code>), search for
+                    <code>"Uzbek"</code>, and add your desired layout variant.
+                </p>
+            </section>
+
+            <!-- TESTED ON -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">＃</span
+                    ><span class="step-title">Tested on</span>
+                </div>
+                <ul class="plain">
+                    <li>Arch Linux — GNOME, Wayland</li>
+                    <li>Debian 13 — GNOME, Wayland</li>
+                    <li>Windows 10</li>
+                </ul>
+                <p class="step-note">
+                    Tried it on another distro, desktop environment, or Windows
+                    version? Open an issue or PR to let us know how it went.
+                </p>
+            </section>
+
+            <!-- ACKNOWLEDGEMENTS -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">＃</span
+                    ><span class="step-title">Acknowledgements</span>
+                </div>
+                <p class="step-note" style="margin: 0 0 10px">
+                    This project builds on the original Uzbek XKB layout by
+                    <a
+                        href="https://github.com/itsbilolbek/uzbek-linux-keyboard"
+                        >itsbilolbek/uzbek-linux-keyboard</a
+                    >.
+                </p>
+                <p class="quote">
+                    Katta rahmat, Bilolbek — asl lotin, 2023, va kirill
+                    layoutlarisiz bu loyiha bõlmasdi!
+                </p>
+            </section>
+
+            <!-- LICENSE -->
+            <section>
+                <div class="step-head">
+                    <span class="step-num">＃</span
+                    ><span class="step-title">License</span>
+                </div>
+                <p class="step-note" style="margin: 0">
+                    MIT License — see the <a href="./LICENSE">LICENSE</a> file
+                    for details.
+                </p>
+            </section>
+
+            <footer>
+                <span>mirjr / uzbek-linux-and-windows-keyboard</span>
+                <a
+                    href="https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard"
+                    >github.com/mirrrjr/uzbek-linux-and-windows-keyboard →</a
+                >
+            </footer>
+        </div>
+
+        <script>
+            function dumpLines(id, lines) {
+                document.getElementById(id).innerHTML = lines
+                    .map(
+                        (l) =>
+                            '<div class="type-line done"><span class="prompt"><span class="sym">$</span></span> <span class="cmd">' +
+                            l.text +
+                            "</span>" +
+                            (l.comment
+                                ? '<span class="cmt">  ' + l.comment + "</span>"
+                                : "") +
+                            "</div>",
+                    )
+                    .join("");
+            }
+
+            function typeInto(hostId, lines, speed) {
+                const host = document.getElementById(hostId);
+                let li = 0;
+                function nextLine() {
+                    if (li >= lines.length) return;
+                    const { text, comment } = lines[li];
+                    const row = document.createElement("div");
+                    row.className = "type-line done";
+                    host.appendChild(row);
+
+                    const promptSpan = document.createElement("span");
+                    promptSpan.className = "prompt";
+                    promptSpan.innerHTML = '<span class="sym">$</span> ';
+                    row.appendChild(promptSpan);
+
+                    const cmdSpan = document.createElement("span");
+                    cmdSpan.className = "cmd";
+                    row.appendChild(cmdSpan);
+
+                    const caret = document.createElement("span");
+                    caret.className = "caret";
+                    row.appendChild(caret);
+
+                    let ci = 0;
+                    const iv = setInterval(() => {
+                        cmdSpan.textContent = text.slice(0, ci + 1);
+                        ci++;
+                        if (ci >= text.length) {
+                            clearInterval(iv);
+                            caret.remove();
+                            if (comment) {
+                                const c = document.createElement("span");
+                                c.className = "cmt";
+                                c.textContent = "  " + comment;
+                                row.appendChild(c);
+                            }
+                            li++;
+                            setTimeout(nextLine, 260);
+                        }
+                    }, speed);
+                }
+                nextLine();
+            }
+
+            const STEP2_LINES = [
+                {
+                    text: "git clone https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard.git",
+                },
+                { text: "cd uzbek-linux-and-windows-keyboard" },
+                { text: "sudo ./install.sh" },
+            ];
+
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                dumpLines("step2", STEP2_LINES);
+            } else {
+                const io = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (!entry.isIntersecting) return;
+                            io.unobserve(entry.target);
+                            typeInto("step2", STEP2_LINES, 14);
+                        });
+                    },
+                    { threshold: 0.4 },
+                );
+                io.observe(document.getElementById("step2"));
+            }
+        </script>
+    </body>
+</html>
