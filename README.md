@@ -18,7 +18,7 @@ This package provides four Linux keyboard layout variants (plus a matching Windo
   - `]` → **Ğ/ğ**
 - **Uzbek (Cyrillic):** A Cyrillic variant of the Uzbek keyboard layout.
 
-![Uzbek keyboard layout](./.github/assets/keyboard-layout.png)
+![Uzbek keyboard layout](./assets/keyboard-layout.png)
 _Detailed view of the **Uzbek (Standard)** layout. Purple keys require `AltGr`, blue keys require `Shift+AltGr`._
 
 ## Installation
@@ -81,11 +81,11 @@ A Windows version of the same **Uzbek (Standard)** layout is available, built wi
 
 | Base | Shift |
 |---|---|
-| ![Base layer](./.github/assets/Uz-latin.jpg) | ![Shift layer](./.github/assets/Uz-latinShft.jpg) |
+| ![Base layer](./assets/Uz-latin.jpg) | ![Shift layer](./assets/Uz-latinShft.jpg) |
 
 | AltGr | Shift + AltGr |
 |---|---|
-| ![AltGr layer](./.github/assets/Uz-latinAltGr.jpg) | ![Shift+AltGr layer](./.github/assets/Uz-latinShftAltGr.jpg) |
+| ![AltGr layer](./assets/Uz-latinAltGr.jpg) | ![Shift+AltGr layer](./assets/Uz-latinShftAltGr.jpg) |
 
 ### Install on Windows
 
