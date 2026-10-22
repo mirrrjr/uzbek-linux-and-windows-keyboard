@@ -1,31 +1,49 @@
-# Uzbek Keyboard Layout for Linux & Windows
+[Özbekça](README.md) | [English](README.en.md) 
 
-A typographically correct keyboard layout for Uzbek, featuring 2023 alphabet updates and quick access to special characters.
+# Linux va Windows uçun özbek klaviatura layouti
 
-## Layouts
+2023-yildagi alifbo yangilanişlarini va maxsus belgilarga tez kirişni özida jamlagan, tipografik jihatdan töğri özbek klaviatura layouti.
 
-This package provides four Linux keyboard layout variants (plus a matching Windows layout, see [Windows](#windows) below):
+## Layoutlar
 
-- **Uzbek (Standard):** The main layout. Base and Shift layers are a plain US QWERTY keyboard — nothing to relearn.
-  - `AltGr` gives access to the Uzbek-specific letters **Ş, Ç, Ö, Õ, Ğ, ı** (and `Shift+i` → **İ**).
-  - `AltGr` + `` ` `` → **ʼ** (Modifier Apostrophe, U+02BC — the _tutuq belgisi_)
-  - `AltGr` + `'` → **ʻ** (Okina, U+02BB — used in _Oʻ/Gʻ_)
-  - `AltGr` also gives quick access to typographic extras: em/en dash, **« »** guillemets, curly quotes, superscripts, currency signs, and more.
-- **Uzbek (US):** Historically a separate variant; it is now functionally identical to **Uzbek (Standard)** above, kept for naming compatibility.
-- **Uzbek (2023):** Based on the proposed 2023 alphabet update, with single-character letters available directly (no `AltGr` needed):
+Bu paket beş xil Linux klaviatura layout variantini (hamda mos Windows layoutini, quyidagi [Windows](#windows) bölimiga qarang) taqdim etadi:
+
+- **Uzbek (Standard):** Asosiy layout. Base va Shift qatlamlari oddiy US QWERTY klaviaturasi, yani hech narsani qayta örganişning hojati yöq.
+  - `AltGr` özbekçaga xos **Ş, Ç, Ö, Õ, Ğ, İ** harflarini beradi.
+  - `AltGr` + `` ` `` → **ʼ** (Modifier Apostrophe, U+02BC, _tutuq belgisi_)
+  - `AltGr` + `'` → **ʻ** (Okina, U+02BB, _Oʻ/Gʻ_ da işlatiladi)
+  - `AltGr` tipografik qöşimçalarga ham tez kiriş imkonini beradi: em/en tire, **« »** burçakli qöştirnoqlar, egri qöştirnoqlar, yuqori indekslar, valyuta belgilari va boşqalar.
+- **Uzbek (US):** Tarixan alohida variant bölgan; hozir u yuqoridagi **Uzbek (Standard)** bilan funksional jihatdan bir xil, nomlar mos kelişi uçun saqlab qolingan.
+- **Uzbek (2023):** 2023-yildagi alifbo yangilanişi taklifiga asoslangan. Bunda bir belgili harflarga bevosita (`AltGr` siz) kiriş mümkin:
   - `W` → **Ş/ş**
   - `[` → **Õ/õ**
   - `]` → **Ğ/ğ**
-- **Uzbek (Cyrillic):** A Cyrillic variant of the Uzbek keyboard layout.
+- **Uzbek (Programmer Dvorak):** Faqat Linux uçun. Base va Shift qatlamlari [Programmer Dvorak](https://www.kaufmann.no/roland/dvorak/) (`dvp`) layoutiga mos keladi, yani belgilar qatori va harflarning Dvorak'dagi joylaşuvi özgarmaydi. Özbekçaga xos harflar va tipografik qöşimçalar **Uzbek (Standard)** dagi kabi `AltGr` da joylaşgan.
+- **Uzbek (Cyrillic):** Özbek klaviatura layoutining kirill varianti.
 
 ![Uzbek keyboard layout](./assets/keyboard-layout.png)
-_Detailed view of the **Uzbek (Standard)** layout. Purple keys require `AltGr`, blue keys require `Shift+AltGr`._
+_**Uzbek (Standard)** layoutining batafsil körinişi. Binafşa rangli tugmalar `AltGr`, kök rangli tugmalar `Shift+AltGr` ni talab qiladi._
 
-## Installation
+## Örnatiş
 
-### NixOS (Recommended)
+### Arch va Debian asosli Linux distributivlarida
 
-Add this repository as a flake input to your `flake.nix`:
+1. Repozitoriyni klonlang:
+
+```bash
+git clone https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard.git
+cd uzbek-linux-and-windows-keyboard
+```
+
+2. Örnatiş skriptini işga tuşiring:
+
+```bash
+sudo ./install.sh
+```
+
+### NixOS
+
+Bu repozitoriyni `flake.nix` faylingizga flake input sifatida qöşing:
 
 ```nix
 # flake.nix
@@ -53,31 +71,19 @@ Add this repository as a flake input to your `flake.nix`:
 }
 ```
 
-You can then use the provided layouts by adding them to your `configuration.nix`:
+Keyin taqdim etilgan layoutlarni `configuration.nix` fayliga qöşib işlatişingiz mümkin:
 
 ```nix
 # configuration.nix
 services.xserver.xkb.uz-enhanced.enable = true;
 ```
 
-### Other Linux Distributions
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard.git
-cd uzbek-linux-and-windows-keyboard
-```
-
-2. Run the installation script:
-
-```bash
-sudo ./install.sh
-```
 
 ## Windows
 
-A Windows version of the same **Uzbek (Standard)** layout is available, built with the [Microsoft Keyboard Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134). It mirrors the Linux layout exactly: a plain US QWERTY base, with the Uzbek letters, punctuation, and typographic extras on `AltGr`.
+Xuddi şu **Uzbek (Standard)** layoutining Windows versiyasi ham mavjud, u [Microsoft Keyboard Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134) yordamida yaratilgan. U Linux layoutini aynan takrorlaydi: asosi oddiy US QWERTY, özbek harflari, punktuatsiya va tipografik qöşimçalar esa `AltGr` da.
+
+> **Eslatma:** Programmer Dvorak varianti hozircha faqat Linux uçun mavjud.
 
 | Base | Shift |
 |---|---|
@@ -87,33 +93,33 @@ A Windows version of the same **Uzbek (Standard)** layout is available, built wi
 |---|---|
 | ![AltGr layer](./assets/Uz-latinAltGr.jpg) | ![Shift+AltGr layer](./assets/Uz-latinShftAltGr.jpg) |
 
-### Install on Windows
+### Windows'da örnatiş
 
-1. Go to the [Releases](https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard/releases) page and download the latest `setup.exe`.
-2. Run the installer (you may see a Windows SmartScreen warning since the installer isn't signed — this is expected for a small, freely distributed tool; choose **More info → Run anyway**).
-3. Open **Settings → Time & Language → Language & Region**, click your language → **Options**, then **Add a keyboard** and choose **Uzbek (AltGr)**.
-4. Switch to it using the language indicator in the taskbar, or `Win + Space`.
+1. [Releases](https://github.com/mirrrjr/uzbek-linux-and-windows-keyboard/releases) sahifasiga ötib, eng oxirgi `setup.exe` ni yuklab oling.
+2. Örnatuvçini işga tüşiring (Windows SmartScreen ogohlantirişi çiqişi mümkin, çünki örnatuvçi imzolanmagan. Bu kiçik, erkin tarqatiladigan vosita uçun normal holat; **More info → Run anyway** ni tanlang).
+3. **Settings → Time & Language → Language & Region** ni oçing, tilingizni bosing → **Options**, keyin **Add a keyboard** ni bosib, **Uzbek (AltGr)** ni tanlang.
+4. Taskbar'dagi til indikatori yoki `Win + Space` orqali unga almaşing.
 
-## Usage
+## Foydalaniş
 
-After installation, you may need to **log out and log back in**.
+Örnatişdan keyin tizimdan çiqib, qayta kirişingiz kerak bölişi mümkin.
 
-Then, go to your system's **Settings > Keyboard** (or **Input Sources**), search for **"Uzbek"**, and add your desired layout variant.
+Keyin tizimingizning **Settings > Keyboard** (yoki **Input Sources**) bölimiga ötib, **"Uzbek"** ni qidiring va kerakli layout variantini qöşing (masalan, **Uzbek (Programmer Dvorak)**).
 
-## License
+## Litsenziya
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Bu loyiha MIT litsenziyasi ostida tarqatiladi. Batafsil ma'lumot uçun [LICENSE](LICENSE) fayliga qarang.
 
-## Tested On
+## Sinovdan ötkazilgan muhitlar
 
-This project has been tested on:
+Bu loyiha quyidagilarda sinovdan ötkazilgan:
 
-- **Arch Linux** — GNOME, Wayland
-- **Debian 13** — GNOME, Wayland
-- **Windows 10**
+- **Arch Linux** — GNOME | Wayland
+- **Debian 13** — GNOME, sway | Wayland
+- **Windows 10/11**
 
-If you've tried it on another distro, desktop environment, or Windows version, feel free to open an issue or PR to let us know how it went.
+Agar boşqa distributiv, desktop muhit yoki Windows versiyasida sinab körgan bölsangiz, issue yoki PR oçib, natijani bildiring.
 
-## Acknowledgements
+## Minnatdorçilik
 
-This project builds on the original Uzbek XKB layout by [itsbilolbek/uzbek-linux-keyboard](https://github.com/itsbilolbek/uzbek-linux-keyboard). Katta rahmat, Bilolbek — asl lotin, 2023, va kirill layoutlarisiz bu loyiha bo'lmasdi!
+Bu loyiha [itsbilolbek/uzbek-linux-keyboard](https://github.com/itsbilolbek/uzbek-linux-keyboard) muallifining asl özbek XKB layouti asosida qurilgan. Katta rahmat, Bilolbek — asl lotin, 2023 va kirill layoutlarisiz bu loyiha bölmasdi!
